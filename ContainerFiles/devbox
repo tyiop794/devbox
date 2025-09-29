@@ -1,0 +1,16 @@
+FROM quay.io/fedora/fedora-toolbox:latest
+
+LABEL com.github.containers.toolbox="true" \
+      usage="This image is meant to be used with the toolbox or distrobox command" \
+      summary="My base developer container" \
+      maintainer="kamilyousuf0712@gmail.com"
+
+# Copy the setup scripts and package list
+COPY ../scripts/devbox.sh /
+COPY ../scripts/distrobox-shims.sh /
+COPY ../packages/devbox.packages /
+
+# Run the setup scripts
+RUN chmod +x devbox.sh distrobox-shims.sh && /devbox.sh
+RUN rm /devbox.sh /distrobox-shims.sh /devbox.packages
+RUN dnf group install development-tools -y
