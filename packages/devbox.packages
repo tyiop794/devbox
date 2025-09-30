@@ -9,4 +9,6 @@ bat
 ripgrep
 mkosi
 gdb
+tmux
+tldr
 
