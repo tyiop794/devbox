@@ -14,3 +14,4 @@ COPY ../packages/devbox.packages /
 RUN chmod +x devbox.sh distrobox-shims.sh && /devbox.sh
 RUN rm /devbox.sh /distrobox-shims.sh /devbox.packages
 RUN dnf group install development-tools -y
+RUN dnf remove -y pacman apt zypper 
